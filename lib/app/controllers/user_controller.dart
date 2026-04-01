@@ -10,6 +10,8 @@ class UserController extends GetxController{
   final DatabaseServicess db=DatabaseServicess();
   final ThemeService thm=ThemeService();
   GlobalKey<FormState> formkey=GlobalKey();
+  var ispasswordvisible=false.obs;
+   var Signupispasswordvisible=false.obs;
  UserController({this.initialUserId});
   final int? initialUserId;
   @override
@@ -20,6 +22,7 @@ class UserController extends GetxController{
     // TODO: implement onInit
     super.onInit();
   }
+ 
    // Load user data in BACKGROUND, don't block UI
   void _loadUserInBackground() {
     Future.delayed(Duration(milliseconds: 100), () async {

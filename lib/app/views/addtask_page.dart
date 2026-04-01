@@ -31,6 +31,7 @@ Widget build(BuildContext context) {
   final textTheme = Theme.of(context).textTheme;
 
   return Scaffold(
+    backgroundColor:  themeColors.containerGradientEnd,
     body: Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -72,14 +73,15 @@ Widget build(BuildContext context) {
                 glassCard(
                   themeColors: themeColors,
                   child: buildCustomTextField(
+                       context: context,
                     controller: titlecontroller,
                     label: 'Task Title',
                     icon: Icons.task,
                    // Inside buildCustomTextField call:
-suffixicons: controller.isListening.value ? Icons.stop : Icons.mic,
+suffixIcon: controller.isListening.value ? Icons.stop : Icons.mic,
 // You might need to wrap the buildCustomTextField in an Obx 
 // if the icon doesn't change automatically.
-                  onpressedSuffixICon: () async {
+                  onPressedSuffixIcon: () async {
   // Check if speech is already initialized/listening
   if (!controller.speech.isListening) {
     bool available = await controller.speech.initialize(
@@ -109,12 +111,13 @@ suffixicons: controller.isListening.value ? Icons.stop : Icons.mic,
                   ),
                 ),
 
-                SizedBox(height: 15),
+                SizedBox(height: 20),
 
                 /// 🔹 Description Field (Glass)
                 glassCard(
                   themeColors: themeColors,
                   child: buildCustomTextField(
+                       context: context,
                     controller: descriptioncontroller,
                     label: 'Description',
                     icon: Icons.description,
@@ -133,7 +136,7 @@ suffixicons: controller.isListening.value ? Icons.stop : Icons.mic,
                         text: "Priority",
                         textType: TextType.titleMedium,
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 20),
 
                       Obx(() => Row(
                             children: ["High", "Medium", "Low"].map((p) {
@@ -142,6 +145,7 @@ suffixicons: controller.isListening.value ? Icons.stop : Icons.mic,
                               return GestureDetector(
                                 onTap: () => priority.value = p,
                                 child:AnimatedContainer(
+                                  
   duration: Duration(milliseconds: 400),
   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
   decoration: BoxDecoration(
@@ -176,7 +180,7 @@ suffixicons: controller.isListening.value ? Icons.stop : Icons.mic,
                     ],
                   ),
                 ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 30),
                 Obx(() => GestureDetector(
   onTap: () async {
     DateTime? date = await showDatePicker(

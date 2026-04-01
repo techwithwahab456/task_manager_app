@@ -76,8 +76,8 @@ class MyApp extends StatelessWidget {
                 : ThemeMode.light,
             initialRoute: '/',
             getPages: [
-              GetPage(name: '/', page: () => _getInitialPage()),
-              GetPage(name: '/onboarding', page: () => Onboardingscreen()),
+              GetPage(name: '/', page: () => OnboardingScreen()),
+              GetPage(name: '/onboarding', page: () => OnboardingScreen()),
               GetPage(name: '/login', page: () => Loginscreen()),
               GetPage(name: '/signup', page: () => SignupScreen()),
               GetPage(name: '/home', page: () => Homepage()),
@@ -91,7 +91,7 @@ class MyApp extends StatelessWidget {
     Widget _getInitialPage() {
     // No FutureBuilder, no duplicate Get.put — everything already resolved in main()
     if (!onboardingSeen) {
-      return Onboardingscreen();
+      return OnboardingScreen();
     } else if (userId != null) {
       return Homepage();
     } else {

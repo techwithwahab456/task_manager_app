@@ -72,7 +72,7 @@ void initState() {
                       TextWidget(text: 'Good Morning', textType: TextType.displayMedium),
                       
                       IconButton(
-                        onPressed: ()async => NotificationService.showInstantNotification(),
+                        onPressed: () => Get.to(()=>ProfilePage()),//NotificationService.showInstantNotification(),
                         icon: _buildGlowingIcon(Icons.person, Colors.grey, Colors.blue),
                       ),
                     ],
